@@ -7,19 +7,23 @@ Introduction
 This is a simple module and drush script for Aegir that allows you to specify an
 LDAP server, Require and filter for  HTTP basic authentication per site in Aegir.
 
-Ends up something something like
+Ends up adding stanzas to the vhost conf something like
 
-  AuthBasicProvider ldap
-  AuthLDAPURL "ldap://ldap.somewhere.de/ou=users,dc=somewhere,dc=de?uid"
-  AuthzLDAPAuthoritative on
-  Require ldap-group cn=aegiradmins,ou=groups,dc=somewhere,dc=de
+<Directory /siteroot>
+AuthBasicProvider ldap
+AuthLDAPURL "ldap://ldap.somewhere.de/ou=users,dc=somewhere,dc=de?uid"
+AuthzLDAPAuthoritative on
+Require ldap-group cn=aegiradmins,ou=groups,dc=somewhere,dc=de
+</Directory>
 
 OR 
 
-  AuthBasicProvider ldap
-  AuthLDAPURL "ldap://ldap.somewhere.de/ou=users,dc=somwhere,dc=de?
-  AuthzLDAPAuthoritative on
-  Require ldap-filter &(objectClass=inetOrgPerson)(objectClass=tracUser)
+<Directory /siteroot>
+AuthBasicProvider ldap
+AuthLDAPURL "ldap://ldap.somewhere.de/ou=users,dc=somwhere,dc=de?"
+AuthzLDAPAuthoritative on
+Require ldap-filter &(objectClass=inetOrgPerson)(objectClass=tracUser)
+</Directory>
 
 Installation
 ------------
@@ -28,12 +32,8 @@ There are two parts to the code:
 - A Drupal module for hostmaster - contained in the /hosting directory. Install
   this like any other Drupal module into you hostmaster site.
 - A provision Drush script - contained in the /provision directory. Copy this
-  into /var/aegir/.drush/provision/aegir_http_basic/ on your Aegir master
+  into /var/aegir/.drush/provision/aegir_http_basic_ldap/ on your Aegir master
    server.
-- Aegir sometimes struggles to set the correct permissions on some directories
-  that might stop your site from working. Make sure that
-  `/var/aegir/config/server_NAME/apache` is executable by 'others', which just
-  means that the directory is browsable
 
 Now just enable the module in the Aegir frontend, and you're ready to go.
 
