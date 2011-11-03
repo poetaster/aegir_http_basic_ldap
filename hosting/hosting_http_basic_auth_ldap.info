@@ -1,0 +1,6 @@
+name = HTTP Basic Ldap Authentication
+description = Allows admins to specify HTTP Ldap basic authentication for sites.
+package = Hosting
+dependencies[] = hosting_site
+
+core = 6.x
