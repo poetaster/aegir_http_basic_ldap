@@ -7,11 +7,19 @@ Introduction
 This is a simple module and drush script for Aegir that allows you to specify an
 LDAP server, Require and filter for  HTTP basic authentication per site in Aegir.
 
-Ends up looking something like
- AuthBasicProvider ldap
- AuthLDAPURL "ldap://ldap.somewhere.de/ou=users,dc=somewhere,dc=de?uid"
- AuthzLDAPAuthoritative on
- Require ldap-group cn=aegiradmins,ou=groups,dc=somewhere,dc=de
+Ends up something something like
+
+  AuthBasicProvider ldap
+  AuthLDAPURL "ldap://ldap.somewhere.de/ou=users,dc=somewhere,dc=de?uid"
+  AuthzLDAPAuthoritative on
+  Require ldap-group cn=aegiradmins,ou=groups,dc=somewhere,dc=de
+
+OR 
+
+  AuthBasicProvider ldap
+  AuthLDAPURL "ldap://ldap.somewhere.de/ou=users,dc=somwhere,dc=de?
+  AuthzLDAPAuthoritative on
+  Require ldap-filter &(objectClass=inetOrgPerson)(objectClass=tracUser)
 
 Installation
 ------------
