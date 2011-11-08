@@ -8,22 +8,14 @@ This is a simple module and drush script for Aegir that allows you to specify an
 LDAP server, Require and filter for  HTTP basic authentication per site in Aegir.
 
 Ends up adding stanzas to the vhost conf something like
-
-<Directory /siteroot>
-AuthBasicProvider ldap
-AuthLDAPURL "ldap://ldap.somewhere.de/ou=users,dc=somewhere,dc=de?uid"
-AuthzLDAPAuthoritative on
-Require ldap-group cn=aegiradmins,ou=groups,dc=somewhere,dc=de
-</Directory>
-
-OR 
-
-<Directory /siteroot>
-AuthBasicProvider ldap
-AuthLDAPURL "ldap://ldap.somewhere.de/ou=users,dc=somwhere,dc=de?"
-AuthzLDAPAuthoritative on
-Require ldap-filter &(objectClass=inetOrgPerson)(objectClass=tracUser)
-</Directory>
+<pre>
+ <Directory /siteroot>
+  AuthBasicProvider ldap
+  AuthLDAPURL "ldap://ldap.somewhere.de/ou=users,dc=somewhere,dc=de?uid"
+  AuthzLDAPAuthoritative on
+  Require ldap-group cn=aegiradmins,ou=groups,dc=somewhere,dc=de
+ </Directory>
+</pre>
 
 Installation
 ------------
@@ -49,7 +41,9 @@ required to access the site.
 Caveats
 -------
 
-This module is mostly a demonstration, so it may not work.
+This module does work in production. One should take care in an Aegir context to either build 
+Aegir or install the module in the aegir site directory to avoid having it clobbered.
+The provision file in .drush of your aegir root should be fine during updates.
 Also, HTTP Basic authentication is sent over the internet as plain text, 
 so you really shouldn't be using passwords you want to keep secret. 
 Well, unless you only use ssl.
