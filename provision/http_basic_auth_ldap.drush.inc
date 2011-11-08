@@ -50,7 +50,7 @@ function http_basic_auth_ldap_provision_apache_vhost_config($uri, $data) {
     $lines[] = "    AuthName \"$message\"";
     $lines[] = "    AuthBasicProvider ldap";
     $lines[] = "    AuthLDAPURL \"$server\"";
-    $lines[] = "    Require \"$require\"";
+    $lines[] = "    Require $require";
     $lines[] = "    AuthzLDAPAuthoritative on";
     $lines[] = "  </Directory>";
   }
@@ -73,7 +73,7 @@ function http_basic_auth_ldap_provision_nginx_vhost_config($uri, $data) {
     $root = d()->root;
     $message = !empty(d()->http_basic_auth_ldap_message) ? d()->http_basic_auth_ldap_message : dt('Restricted access');
     $lines[] = "auth_basic \"$message\";";
-    $lines[] = "auth_basic_user_file $path;";
+    $lines[] = "auth_basic_user_file $require;";
     $lines[] = "";
   }
 

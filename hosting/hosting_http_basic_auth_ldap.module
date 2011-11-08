@@ -40,7 +40,7 @@ function hosting_http_basic_auth_ldap_form_alter(&$form, $form_state, $form_id) 
  */
 function hosting_http_basic_auth_ldap_insert($node) {
   if ($node->http_basic_auth_ldap_server) {
-    db_query("INSERT INTO {hosting_http_basic_auth_ldap} (vid, nid, server, require, message) VALUES (%d, %d, '%s', '%s', '%s')", $node->vid, $node->nid, $node->http_basic_auth_ldap_server, $node->http_basic_auth_ldap_require, $node->http_basic_auth_ldap_message);
+    db_query("INSERT INTO {hosting_http_basic_auth_ldap} (vid, nid, server, lrequire, message) VALUES (%d, %d, '%s', '%s', '%s')", $node->vid, $node->nid, $node->http_basic_auth_ldap_server, $node->http_basic_auth_ldap_require, $node->http_basic_auth_ldap_message);
   }
 }
 
@@ -48,11 +48,11 @@ function hosting_http_basic_auth_ldap_insert($node) {
  * Implementation of hook_update()
  */
 function hosting_http_basic_auth_ldap_update($node) {
-  if (FALSE === db_fetch_array(db_query("SELECT server AS http_basic_auth_ldap_server, require AS http_basic_auth_ldap_require FROM {hosting_http_basic_auth_ldap} WHERE vid = %d", $node->vid))) {
+  if (FALSE === db_fetch_array(db_query("SELECT server AS http_basic_auth_ldap_server, lrequire AS http_basic_auth_ldap_require FROM {hosting_http_basic_auth_ldap} WHERE vid = %d", $node->vid))) {
     hosting_http_basic_auth_ldap_insert($node);
   }
   else {
-    db_query("UPDATE {hosting_http_basic_auth_ldap} SET server = '%s', require = '%s', message ='%s' WHERE vid = %d", $node->http_basic_auth_ldap_server, $node->http_basic_auth_ldap_require, $node->http_basic_auth_ldap_message, $node->vid);
+    db_query("UPDATE {hosting_http_basic_auth_ldap} SET server = '%s', lrequire = '%s', message ='%s' WHERE vid = %d", $node->http_basic_auth_ldap_server, $node->http_basic_auth_ldap_require, $node->http_basic_auth_ldap_message, $node->vid);
   }
 
 }
@@ -95,7 +95,7 @@ function hosting_http_basic_auth_ldap_nodeapi(&$node, $op, $a3 = NULL, $a4 = NUL
         }
         break;
       case 'load':
-        $additions = db_fetch_array(db_query("SELECT server AS http_basic_auth_ldap_server, require AS http_basic_auth_ldap_require, message AS http_basic_auth_ldap_message FROM {hosting_http_basic_auth_ldap} WHERE vid = %d", $node->vid));
+        $additions = db_fetch_array(db_query("SELECT server AS http_basic_auth_ldap_server, lrequire AS http_basic_auth_ldap_require, message AS http_basic_auth_ldap_message FROM {hosting_http_basic_auth_ldap} WHERE vid = %d", $node->vid));
         return $additions;
         break;
     }
