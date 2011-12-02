@@ -11,7 +11,7 @@
  *
  * This will be used to generate the 'admin/hosting' page.
  *
- * @return
+ * @return array
  *  associative array indexed by feature key.
  */
 function hosting_http_basic_auth_ldap_hosting_feature() {
@@ -20,7 +20,6 @@ function hosting_http_basic_auth_ldap_hosting_feature() {
     'title' => t('HTTP Basic Ldap Authentication'),
     // description
     'description' => t('Allows admins to specify HTTP basic ldap authentication for sites.'),
-    // initial status ( HOSTING_FEATURE_DISABLED, HOSTING_FEATURE_ENABLED, HOSTING_FEATURE_REQUIRED )
     'status' => HOSTING_FEATURE_DISABLED,
     // module to enable/disable alongside feature
     'module' => 'hosting_http_basic_auth_ldap',
@@ -29,3 +28,4 @@ function hosting_http_basic_auth_ldap_hosting_feature() {
     );
   return $features;
 }
+

@@ -1,5 +1,8 @@
 <?php
 /**
+ * @file
+ * Implement drush service to amend apache config file
+ *
  * a bit of a hack. this active version is for aegir
  * in a ~/.drush context include_once(dirname(__FILE__) . '/../provision.service.inc');
  */

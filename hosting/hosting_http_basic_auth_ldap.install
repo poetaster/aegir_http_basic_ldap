@@ -1,7 +1,11 @@
 <?php
+/**
+ * @file
+ * Installation and update functions for hosting_http_basic_auth_ldap.
+ */
 
 /**
- * Implementation of hook_schema().
+ * Implements hook_schema().
  */
 function hosting_http_basic_auth_ldap_schema() {
   $schema['hosting_http_basic_auth_ldap'] = array(
@@ -41,7 +45,7 @@ function hosting_http_basic_auth_ldap_schema() {
 }
 
 /**
- * Implementation of hook_update_N().
+ * Implements hook_update_N().
  *
  * Add the message field to the table.
  */
@@ -59,7 +63,7 @@ function hosting_http_basic_auth_ldap_update_6100() {
 }
 
 /**
- * Implementation of hook_install().
+ * Implements hook_install().
  */
 function hosting_http_basic_auth_ldap_install() {
   // Create tables.
@@ -67,9 +71,10 @@ function hosting_http_basic_auth_ldap_install() {
 }
 
 /**
- * Implementation of hook_uninstall().
+ * Implements hook_uninstall().
  */
 function hosting_http_basic_auth_ldap_uninstall() {
   // Remove tables.
   drupal_uninstall_schema('hosting_http_basic_auth_ldap');
 }
+

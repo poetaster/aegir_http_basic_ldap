@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * @file
+ * hosting_http_basic_auth_ldap drush context functions 
+ *
+ */
+
+/**
  * Implementation of hook_hosting_site_context_options().
  */
 function hosting_http_basic_auth_ldap_hosting_site_context_options(&$task) {
@@ -29,3 +35,4 @@ function hosting_http_basic_auth_ldap_drush_context_import($context, &$node) {
   }
 
 }
+

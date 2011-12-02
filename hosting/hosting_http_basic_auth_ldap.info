@@ -4,3 +4,4 @@ package = Hosting
 dependencies[] = hosting_site
 
 core = 6.x
+
