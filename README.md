@@ -3,7 +3,6 @@ Aegir HTTP basic ldap authentication
 
 Introduction
 ------------
-
 This is a simple module and drush script for Aegir that allows you to specify an
 LDAP server and filter for  HTTP basic authentication per site in Aegir.
 
@@ -20,7 +19,6 @@ Ends up adding stanzas to the vhost conf something like
 
 Installation
 ------------
-
 The following installation of the code included is being used with Aegir 1.4 
 installed from debian packages with drush 4.4. Documentation at 
 http://community.aegirproject.org/installing/debian
@@ -37,12 +35,11 @@ There are two parts to the code:
   into /var/aegir/.drush/provision/http_basic_auth_ldap.drush.inc on your 
   Aegir master server.
 
-Now just enable the module in the Aegir frontend, and you're ready to go.
+Now just enable the module in the Aegir frontend, and you\'re ready to go.
 
 
 Usage
 -----
-
 When creating or editing a site, you can optionally add an LDAP server, 
 Require Filter and message for the HTTP basic authentication. 
 Leaving this blank will do nothing, but if they are filled in then those 
